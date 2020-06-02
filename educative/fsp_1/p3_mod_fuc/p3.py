@@ -185,3 +185,69 @@ feature, raising a TypeError if you tried it.
 Michael Hudson contributed a patch to fix
 this shortcoming. 
 '''
+
+#Ascending order
+def isSorted(l):
+    for num,ele in enumerate(l[:-1]):
+        if l[num] > l[num+1]:
+            return False
+    return True
+
+def isSorted2(l):
+    cur = l[0]
+    for val in l:
+        if cur > val:
+            return False
+        cur = val
+    return True
+
+def isSorted3(l):
+    i = 1
+    while i < len(l):
+        if l[i] < l[i-1]:
+            return False
+        i += 1
+    return True
+
+def isSorted4(l):
+    for val in range(1,len(l)):
+        if l[val] < l[val-1]:
+            return False
+    return True
+
+def hasDuplicates(l):
+    cache = {}
+    for ele in l:
+        if ele not in cache:
+            cache[ele] = "Found"
+        else:
+            return True
+    return False
+
+def hasDuplicates2(l):
+    length = len(l)
+    for i in range(length):
+        for j in range(i+1,length):
+            if l[i] == l[j]:
+                return True
+    return False
+
+def printEvenOdd(n):
+    for ele in range(n,0,-1):
+        if ele % 2 == 0:
+            print(f"Even number: {ele}")
+        else:
+            print(f"Odd number: {ele}")
+
+def printEvenOdd2(n):
+    while (n >0):
+        if num % 2 == 0:
+            print(f"Even number: {n}")
+        else:
+            print(f"Odd number: {n}")
+        n -= 1
+
+
+
+
+
