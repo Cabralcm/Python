@@ -100,3 +100,7 @@ Safer way of extracting values from a dictionary:
 A dictionary can be made within a dictionary. And you can use other dictionaries as values.
 
 Akin to a pointer to pointers.
+
+# Indexing Speeds in Python
+
+https://stackoverflow.com/questions/35640780/python-fastest-way-to-find-indexes-of-item-in-list
