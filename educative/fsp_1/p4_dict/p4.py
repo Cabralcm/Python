@@ -168,6 +168,74 @@ def updateAges2(ages, n):
         ages[k] = v + n
     return ages
 
-print(updateAges2(ages,700))
+# print(updateAges2(ages,700))
+
+# Total Students
+
+students = {
+    "Peter": {"age": 10, "address": "Lisbon"},
+    "Isabel": {"age": 11, "address": "Sesimbra"},
+    "Anna": {"age": 9, "address": "Lisbon"},
+}
+
+def totalStudents(students):
+    count = 0
+    for x in students:
+        count += 1
+
+def totalStudents2(students):
+    return len(students)
+
+def totalStudents3(students):
+    return (len(students.keys()))
+    
+# print(totalStudents2(students))
+
+# Average Values within Multiple Dictionaries
+
+def calculateAvgAge(students):
+    num = len(students)
+    total = 0
+    for n in students.values():
+        total += n["age"]
+    print(total/num)
+    return total/num
+
+def calculateAvgAge2(students):
+    add_age = 0
+    for n in students.values():
+        add_age += n["age"]
+    return (add_age / len(students.keys()))
+
+# calculateAvgAge(students)
+
+def find_students(students, address):
+    s_info = list(students.values())
+    s_names = list(students.keys())
+    print(s_names)
+    indexes = [num for num,info in enumerate(s_info) if info['address'] == address]
+    print(indexes)
+    output = [[s_names[i]] for i in indexes]
+    print(output)
+    # print(values)
+    # reside = [x for x in values if values["address"]==address]
+    # print(reside)
+
+# find_students(students, 'Lisbon')
+
+def find_students2(students, address):
+    names = []
+    for key, subdict in students.items():
+        for sublist in students.values(): #iterates through every entry in subdict
+            if (sublist == address):
+                names.append(key)
+    return sorted(names)
+
+def find_students3(students, address):
+    names = []
+    for key, subdict in students.items():
+        if (subdict["address"] == address):
+            names.append(key)
+    return sorted(names)
 
 

@@ -104,3 +104,15 @@ Akin to a pointer to pointers.
 # Indexing Speeds in Python
 
 https://stackoverflow.com/questions/35640780/python-fastest-way-to-find-indexes-of-item-in-list
+
+
+# Sorting lists in Python
+
+```
+sort() -- Works on the same list
+my_list.sort(key = . reverse= )
+
+sorted() -- Returns a new list that is sorted
+sorted(list = my_list, key= , reverse = )
+```
+
