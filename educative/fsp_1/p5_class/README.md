@@ -3,3 +3,38 @@
 Object-Oriented Programming (OOP)
 
 Class is a structure that allows you to group together a set of properties (called attributes), and functions (called methods or subroutines), to manipulate those properties.
+
+Most classes will need the CONSTRUCTOR method `(__init__)` to **initialize** the class's attributes. A constructor will receive arguments, and stores that information in the **class's instance** (referenced by the `self` keyword). 
+
+# Python Data Model - Built-in Methods (Dunder Methods)
+
+Python has many built-in methods (Dunder methods)
+
+https://docs.python.org/3/reference/datamodel.html
+
+Python has a built-in method `__str__` used for the string representation of an object.
+By default, when an object is printed, Python returned the memory address in which the object is stored.
+
+Another built-in method is `__repr__`, which is similar to `__str__`. 
+
+Both of them can be overridden for any clasas, and there are only minor differences.
+
+### object.`__repr__` 
+Called by the repr() built-in function to compute the "official" string representation of the object. If at all possible, this should look like a valid Python expression that could be used to recreate an object with the same value. 
+
+The result value MUST be a string object. If a class defines `__repr__()` but not `__str__()`, then `__repr__()` is also used when an "informal" string representation of instance sof that class is required. 
+
+> This is typically used for debugging, thus important that the representation is INFORMATION-RICH an UNAMBIGIOUS
+
+### object.`__str__`
+
+Called by `str(object)` and the built-in functions `format()` and `print()` to compute the "informal" or nicely printable string representation of an object. The result value must be a string object. 
+
+This method differs from `object.__repr__()` in that there is NO EXPECTATION that `__str__()` returns a valid Python expression. That is, a more convenient or concise representation can be used. 
+
+The default implementation defined by the built-in type `object` calls `object.__repr__()`.
+
+
+
+
+
