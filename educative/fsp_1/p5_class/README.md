@@ -34,7 +34,60 @@ This method differs from `object.__repr__()` in that there is NO EXPECTATION tha
 
 The default implementation defined by the built-in type `object` calls `object.__repr__()`.
 
+### Summary between str() and repr()
 
+`str()`
+1) Makes the object readable
+2) Generates output for the end-user
+
+`repr()`
+1) needs code that reproduces the object
+2) generates output for the developer
+
+If both methods are defined in a class, then `__str__` is used.
+
+# Python Inheritance
+
+Inheritance is a process in which a **subclass** can *inherit* the attributes and methods of another class, allowing it to rewrite some of the **super class**'s functionalities (in other languages, called the **parent class**)
+
+For instance, the `person` class in the first lesson could permit us to create a subclass for people at 10 years of age.
+
+```
+class Person:
+      def __init__(self, name, age): # Person's constructor
+          self.name = name # Person's attribute
+          self.age = age # Person's attribute
+
+      def greet(self): # Person's method
+          print("Hello, my name is %s!" % self.name)
+
+class TenYearOldPerson(Person): # TenYearOldPerson inherits from Person
+
+      def __init__(self, name): # TenYearOldPerson's constructor
+          Person.__init__(self, name, 10) # accesses Person's constructor
+
+      def greet(self): # rewrites the greet method
+          print("I don't talk to strangers!!")
+
+tyo = TenYearOldPerson("Jack") # instance of TenYearOldPerson
+tyo.greet() # call greet method of the TenYearOldPerson
+```
+
+# Python Multi-Level Inheritance
+
+**Organization of Super, Subclass and Sub-Subclasses**
+
+Animal | Mammal | Carnivore
+---|---|---
+Superclass | Subclass | Sub-Subclass
+
+**Relation between Class Types**
+
+Class | Superclass | Relation
+---|---|---
+Carnivore | Mammal | Carnivore is a Mammal
+Mammal | Animal | Mammal is an Animal
+Animal | - | -
 
 
 

@@ -44,7 +44,8 @@ class Rectangle:
         return f"{self.x1},{self.y1},{self.x2},{self.y2}"
 
     def __repr__(self):
-        
+        # return str(self.x1) + "," + str(self.y1) + "," + str(self.x2) + "," + str(self.y2)
+        return f"{self.x1},{self.y1},{self.x2},{self.y2}"
 
 
 r = Rectangle(2,7,8,4)
@@ -53,6 +54,31 @@ print(r.height())
 print("Area: " + str(r.area()))
 print("Perimeter: " + str(r.perimeter()))
 print(r)
+
+# Inheritance Example
+
+class Person:
+
+    def __init__(self, name, age): #Person's constructor
+        self.name = name #Person's field/attribute
+        self.age = age #Person's field/attribute
+    
+    def greet(self): #Person's method
+        print(f"Hello, my name is {self.name}!")
+
+class TenYearOldPerson(Person): # TenYearOldPerson Inherits from Person
+
+    def __init__(self,name): #TenYearOldPerson's constructor
+        Person.__init__(self, name, 10) # accesses Person's Constructor
+    
+    def greet(self): #Rewrites (overriding) the greet method
+        print("I don't talk to strangers!")
+
+tyo = TenYearOldPerson("Jack") #instance of TenYearOldPerson
+tyo.greet() # call greet method of the TenYearOldPerson
+
+
+
 
 
 
