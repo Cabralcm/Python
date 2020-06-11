@@ -77,9 +77,50 @@ class TenYearOldPerson(Person): # TenYearOldPerson Inherits from Person
 tyo = TenYearOldPerson("Jack") #instance of TenYearOldPerson
 tyo.greet() # call greet method of the TenYearOldPerson
 
+# Classes and Sub Classes
+
+class Animal():
+    def __init__(self, name, food, characteristic): # Animal's constructor
+        self.name = name # Animal's attribute
+        self.food = food # Animal's attribute
+        self.characteristic = characteristic # Animal's attribute
+        print("I am a " + str(self.name) + ".")
+    
+class Mammal(Animal): # Mammal inherits from Animal
+    def __init__(self, name, food): # Mammal's constructor
+        Animal.__init__(self, name,food, "warm blooded") #Animal's constructors
+        print("I am warm blooded.")
+
+class Carnivore(Mammal):
+    def __init__(self, name): #Carnivore inherits from Mammal
+        Mammal.__init__(self, name, "meat") #Mammal's constructor
+        print("I eat meat.")
+
+lion = Carnivore("lion") # Lion is an instance of a Carnivore
 
 
+class Animal():
+    def __init__(self, name, food, characteristic): # Animal's constructor
+        self.name = name # Animal's attribute
+        self.food = food # Animal's attribute
+        self.characteristic = characteristic # Animal's attribute
+    def printer(self):
+        print("I am a " + str(self.name) + ".")
+    
+class Mammal(Animal): # Mammal inherits from Animal
+    def __init__(self, name, food): # Mammal's constructor
+        Animal.__init__(self, name,food, "warm blooded") #Animal's constructors
+    def printer(self):
+        print("I am warm blooded.")
 
+class Carnivore(Mammal):
+    def __init__(self, name): #Carnivore inherits from Mammal
+        Mammal.__init__(self, name, "meat") #Mammal's constructor
+    def printer(self):
+        print("I eat meat.")
+
+lion = Carnivore("lion")
+lion.printer()
 
 
 
