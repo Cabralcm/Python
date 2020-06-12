@@ -77,7 +77,7 @@ class TenYearOldPerson(Person): # TenYearOldPerson Inherits from Person
 tyo = TenYearOldPerson("Jack") #instance of TenYearOldPerson
 tyo.greet() # call greet method of the TenYearOldPerson
 
-# Classes and Sub Classes
+### Classes and Sub Classes
 
 class Animal():
     def __init__(self, name, food, characteristic): # Animal's constructor
@@ -98,6 +98,7 @@ class Carnivore(Mammal):
 
 lion = Carnivore("lion") # Lion is an instance of a Carnivore
 
+### Multi-Inheritance (Chained Inheritance)
 
 class Animal():
     def __init__(self, name, food, characteristic): # Animal's constructor
@@ -121,6 +122,166 @@ class Carnivore(Mammal):
 
 lion = Carnivore("lion")
 lion.printer()
+
+### Multiple Inheritance (Parallel Inheritance)
+
+class Person:
+  def __init__(self, name):
+      self.name = name
+
+  def greet(self):
+    print("Hi, I am " + self.name + ".")
+
+
+class Student (Person): # Student inherits from Person class
+  def __init__(self, name, rollNumber):
+    self.name = name # Attribute inherited from the Person class
+    self.rollNumber = rollNumber # Student's attribute
+    Person.__init__(self, name) # Person's constructor
+
+  def report(self): # Student's method
+    print("My roll number is " + self.rollNumber + ".")
+
+class Teacher (Person): # Teacher inherits from Person class
+  def __init__(self, name, course):
+    self.name = name # Attribute inherited from the Person class
+    self.course = course # Teacher's attribute
+    Person.__init__(self, name) # Person's constructor   
+
+  def introduce(self): # Teacher's method
+    print("I teach " + self.course + ".")
+
+class TA (Student, Teacher): # TA inherits from Student and Teacher class
+  def __init__(self, name, rollNumber, course, grade):
+    self.name = name # Attribute inherited from the Person class
+    self.rollNumber = rollNumber # Attribute inherited from the Student class
+    self.course = course # Attribute inherited from the Teacher class
+    self.grade = grade # TA's attribute
+    
+  def details(self): # TA's method
+    if self.grade=="A*" or self.grade=="A" or self.grade=="A-": # if person is elligible for TAship
+      Person.greet(self) # can access Person's greet method
+      Student.report(self) # can access Student's report method
+      Teacher.introduce(self) # can access Teacher's introduce method
+      print ("I got an " + self.grade + " in " + self.course + ".")
+    else: # person is not elligible for TAship
+      print(self.name + ", you can not apply for TAship.")
+    
+ta = TA('Ali', '13K-1234', 'Data Structures' ,'A') # TA object
+ta.details()
+
+#uncomment any of the following lines of code and see how they work
+# ta.greet()
+# ta.report()
+# ta.introduce()
+
+print("\n")
+
+ta2 = TA('Ahmed', '14K-5678', 'Algorithms' ,'B')
+ta2.details()
+
+### Super Method
+
+# Inheritance without Super
+
+class Person(object): # Super class
+  def __init__(self, name):
+    self.name = name
+  def greet(self):
+    print ("Hi, I'm " + self.name + ".") # Super class does something
+
+class Student(Person): # Subclass inheriting from the super class
+  def __init__(self, name, degree):
+    self.name = name
+    self.degree = degree
+    Person.__init__(self, name) # calls constructor of super class
+  def greet(self):
+    Person.greet(self) # calls method of super class
+    print ("I am a " + self.degree + " student.")
+  
+student = Student("Ali", "PhD") # Create an object of the subclass
+student.greet()
+
+## Inheritance WITH Super
+
+class Person(object): # Super class
+  def __init__(self, name):
+    self.name = name
+  def greet(self):
+    print ("Hi, I'm " + self.name + ".") # Super class does something
+
+class Student(Person): # Subclass inheriting from the super class
+  def __init__(self, name, degree):
+    self.name = name
+    self.degree = degree
+    super().__init__(name) # calls constructor of super class
+  def greet(self):
+    super().greet() # calls method of super class
+    print ("I am a " + self.degree + " student.")
+  
+student = Student("Ali", "PhD") # Create an object of the subclass
+student.greet()
+
+## Challenge - Rectangle Class
+
+class Rectangle:
+
+    def __init__(self, x1, y1, x2, y2):
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+
+    def width(self):
+        return self.x2 - self.x1
+    
+    def height(self):
+        return self.y1 - self.y2
+    
+    def perimeter(self):
+        return sum(self.x1, self.x2, self.x3, self.x4)
+    
+    def area(self):
+        return self.width() * self.height()
+
+## My solution --> did not call Super()....
+
+class Square():
+
+    def __init__(self, x1, y1, length):
+        self.x1 = x1
+        self.y1 = y1
+        self.length = length
+    
+    def get_length(self):
+        return self.length
+
+    def area(self):
+        return self.get_length()**2
+
+class Square(Rectangle): #Inately inherits the methods from the Rectangle class!
+
+    def __init__(self,x1,y1,length):
+        x2 = x1 + length
+        y2 = y1 + length
+        super().__init__(x1,y1,x2,y2) #Calls the Rectangle Constructor!
+
+## Inheritance Solution
+
+class Square(Rectangle):
+
+    def __init__(self, x1, y1, length):
+        x2 = x1 + length #Top left corner for a screen, bottom left for a graph
+        y2 = y1 + length #Top left corner for a screen, bottom left for a graph
+        super().__init__(x1,y1,x2,y2) #Note, we don't need to call SELF when using the super() function
+
+# Testing the code
+
+s = Square(1,1,10)
+print(f"Width: {str(s.width())}, Height: {str(s.height())}, Area: {str(s.area()}")
+
+s2 = Square(2,5,7)
+print(f"Width: {str(s.width())}, Height: {str(s.height())}, Area: {str(s.area()}")
 
 
 

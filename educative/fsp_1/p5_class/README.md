@@ -148,5 +148,112 @@ If you remove the `printer()` method of the Mammal class, the `lion` object will
 
 `I am a lion.`
 
+# Python Multiple Inheritance
 
+In Python, a class can inherit **attributes** and **methods** from **more than one class.**
+
+Critics of multiple inheritance say that it is confusing and complex. Such as the [Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance).
+
+The idea that Multiple Inheritance is somehow "bad" is mainly based on the fact that some languages either do not support multiple inheritance (like Java), or do not have a very good implementation for it. Python however has a very sophisticasted and well-structured approach to multiple inheritance.
+
+Consider the following code snippert where `ChildClass` inherits from `ParentClass1, ParentClass2, ParentClass3`, and so on.
+
+```
+class ChildClass(ParentClass1, ParentClass2, ParentClass3, ...):
+    pass
+```
+
+## Multiple Inheritance Example
+
+Real-world example, where a `person` can be either a `Teacher` or a `Student`.
+Additionally, a `person` can be a `TA`. A `TA` inherits the attributes and methods of both the `Student` and `Teacher` class because, essentially, a `TA` is a `Student`, who is performing some of the duties that a `Teacher` performs. That is, a diamon structure:
+
+| |Person| |
+--|--|--
+Student| |Teacher|
+| |TA| |
+
+Where, `Person` contains: name, and greet()
+
+`Student` contains: name, rollNumber, and greet(), report()
+
+`Teacher` contains: name, course, and greet(), introduce()
+
+`TA` contains: name, rollNumber, course, grade, and greet(), report(), and introduce()
+
+# Python Super Method - Inheritance
+
+You can access the constructor and methods of the parent class from the child class using:
+
+`ParentClassName.__init__(self, methodParameter)` 
+
+`ParentClassName.__init__(self, methodParameter)`
+
+This method tends to be confusing when the hierachy has multiple levels because you have to remember the exact names of the parent classes and where to use them. 
+
+An easier way to do this is the `super()` method.
+
+The built-in `super` function allows the child class (or subclass) to access inherited methods of the parent class (or superclass) that have been overwritten in the child class.
+
+[Python Docs for Super Function](https://docs.python.org/2/library/functions.html#super)
+
+> Super is used to return a proxy object that delegates method calls to a parent or sibling class of type. This is useful for accessing inherited methods that have overriden in a class.
+
+## Using the `Super` Function
+
+1) Single Inheritance
+- We can use `super` in single inheritance to refer to the parent (or super) class or multiple classes without explicitly naming them. This is just a shortccut and helps make your code maintainable and easy to understand.
+
+2) Multiple Inheritance
+- it is possible in Python for a class to inherit from multiple parent classes. You can use the `super` method to multiple or collaborative inheritance. This can be done only in Python (or languages the same capabilities) because some languages do not support inheritance from multiple classes.
+
+## Syntax for `Super`
+
+`super().methodName(args)`
+
+Following example where the `Student` class inherits from (or "is a") `Person`.
+
+```
+class Person(object): # Super class
+  def __init__(self, name):
+    self.name = name
+  def greet(self):
+    print ("Hi, I'm " + self.name + ".") # Super class does something
+
+class Student(Person): # Subclass inheriting from the super class
+  def __init__(self, name, degree):
+    self.name = name
+    self.degree = degree
+    Person.__init__(self, name) # calls constructor of super class
+  def greet(self):
+    Person.greet(self) # calls method of super class
+    print ("I am a " + self.degree + " student.")
+  
+student = Student("Ali", "PhD") # Create an object of the subclass
+student.greet()
+```
+
+Notice, when you create a `Student` object, it can access the `Parent` class's `greet()` method and write its own too.
+
+```
+class Person(object): # Super class
+    def __init__(self,name):
+        self.name = name
+    def greet(self):
+        print(f"Hi, I'm {self.name}.") # Super class does something
+
+class Student(Person): # Subclass inheriting from the super class
+    def __init__(self, name, degree):
+        self.name = name
+        self.degree = degree
+        super().__init__(name) # calls the constructor of the super class
+    def greet(self):
+        super().greet() # calls method of super class
+        print(f"I am a {self.degree} student.")
+
+student = Student('Ali','PhD')
+student.greet()
+```
+
+> Important - in the code sample above, when we called the parent class's methods `super().__init__(name)` and `super().greet()`, we didn't explictly add `self` as a parameter to these methods.
 
