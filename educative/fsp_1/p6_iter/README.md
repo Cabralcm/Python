@@ -91,4 +91,35 @@ for value in MyRange(1,4):
     print(value)
 ```
 
+The first and second elements of the Fibonacci sequence are 0 and 1 respectively.
+Each successive element is obtained by adding the two elements before it. For instance, the 3rd element is obtained by adding the 1nd and 2nd elements, the 4th is obtained by adding the 2nd and 3rd elements, and so on. Thus we can conclude the following for `myArray` in a Fibonacci sequence:
 
+myArray[i] = myArray[i -1] + myArray[i - 2]
+
+We use this rationale/logic in the following code to calculate the Fibonacci sequence up to a certain range `n`.
+
+```
+class MyRange:
+
+    def __init__(self, n):
+        self.n = n
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        outArray = []
+        for i in range(self.n): # from n to 0
+            if i == 0 or i == 1:
+                myArray.append(i)
+            else:
+                myArray.append( myArray[i-1] + myArray[i-2])
+        return myArray
+
+# Test
+myrange = MyRange(10)
+print(myrange.next())
+```
+
+
+```
