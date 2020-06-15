@@ -60,3 +60,45 @@ End Sum 3 + 4
 End Sum 1 + 2
 [3, 5, 7]
 '''
+
+# Async outline
+
+"""
+import asyncio
+
+async def sum_async(n1,n2):
+    await asyncio.sleep(1)
+    return
+
+loop = asyncio.get_event_loop()
+
+results = loop.run_until_complete(asyncio.gather(
+    sum(n1,n2),
+    sum(n1,n2),
+    sum(n1,n2)
+))
+
+loop.close()
+"""
+
+"""
+import asyncio
+
+async def sum(n1,n2):
+    print("Input")
+    await asyncio.sleep(1)
+    print("end")
+    return n1+n2
+
+loop = asyncio.get_event_loop()
+
+results = loop.run_until_complete(gather(
+    sum(1,1),
+    sum(1,2),
+    sum(1,3)
+))
+
+print(results)
+
+loop.close()
+"""
