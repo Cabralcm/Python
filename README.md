@@ -1,5 +1,5 @@
 # Python
-Programming in Python
+Programming courses and projects in Python
 
 
 # Configure Editor
