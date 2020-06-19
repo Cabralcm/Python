@@ -425,7 +425,7 @@ print(result)
 print(calculator(lambda n1, n2: n1 + n2, 10, 20))
 ```
 
-# The Map() function 
+# The `Map()` function 
 
 The `map()` function, creates a map object using an existing list, and a function as its parameters.
 
@@ -449,8 +449,59 @@ This creates a new list! The original list remains unchanged.
 
 We could have created a function that doubles a number and used it as the argument in `map()`, but the lambda made things simpler.
 
+# `Filter()` Function
+
 Another similar example is the `filter()` function. Requires a function and a list.
 
+`filter()` *filters* elements from a list, if the elements satisfy the condition that is specified in the argument function!
+
+For instance, we can write a `filter()` function that filters all the elements which are greater than `10`:
+
+```
+numList = [30,-2,-15,17,17,9,100]
+
+greater_than_10 = list( filter(lambda n: n > 10, numList))
+# Lambda: returns value of "n" if n > 10
+```
+
+`filter()` function returns a **filter object** which can be converted to list using `list()`.
+
+Just like `map()`, `filter()` returns a new list without changing the original one.
+
+Thus, we can see how functions can become arguments, and why lambdas are useful within functions, and can be used as mapping/filtering functions.
+
+# Recursion
+
+The process in which a function calls itself during its execution, each recursive call takes the program one scope deeper into the function.
+
+The recurve call stops at the **base case**. The base case is a check used to indicate that there should be no further recursion.
+
+Each recursion call is the general (recursive) case/step, where the solution is expressed in terms of a smaller version of itself. 
+
+```
+def rec_count(number):
+    print(number)
+    # Base case
+    if number == 0:
+        return 0
+    rec_count(number - 1)  # A recursive call with a different argument
+    print(number)
+
+
+rec_count(5)
+```
+
+In each call, the value of the number variable is printed. We then check whether the base case has been fulfilled. If not, we make a recursive call to the function with the current value decremented.
+
+One thing to notice is that an outer call cannot move forward until all the inner recursive calls have finished. This is why we get a sequence of 5 to 0 to 5.
+
+# Why use Recursion?
+
+Allows us to easily solve many problems related to **graphs** and **trees**, and important in search algorithms.
+
+If we don't specify an appropriate base case, or update our arugments as we recurse, the program will reach **infinite recursion** (and eventually crash).
+
+The arguments passed to our recursive function are updated in each recursive call, so that base case can eventually be reached.
 
 
 
