@@ -184,20 +184,272 @@ print(10 * False)
 
 > AND can be thought of as multiplication between two operands.
 
+```
+num1 = 10  # Binary value = 01010
+num2 = 20  # Binary Value = 10100
+
+print(num1 & num2)  # 00000
+print(num1 | num2)  # 11110
+print(num1 ^ num2)  # 11110
+print(~num1)  # 1111 0101
+print(num1 << 3)  # 0101 0000
+print(num2 >> 3)  # 0010
+```
+
+> In simple terms, AND can be thought of as multiplication between two operands.
+
+# String Operations
+
+```
+print('a' < 'b') # 'a' has a smaller Unicode value
+
+house = "Gryffinder"
+house_copy = "Gryffindor"
+
+print(house == house_copy)
+
+new_house = "Slytherin"
+
+print(house == new_house)
+
+print(new_house <= house)
+
+print(new_house >= house)
+
+**Output**
+True
+True
+False
+False
+True
+```
+
+## Concatenation
+
+first_half = "Bat"
+second_half = "man"
+
+full_name = first_half + second_half
+print(full_name)
+
+The `*` operator, allows us to multiply a string, resulting in a repeating pattern:
+
+```
+print("ha" * 3)
+```
+
+## Search 
+
+```
+random_string = "This is a random string"
+
+print('of' in random_string) # Check whether 'of' exists in a random_string
+
+print('random' in random_string) # 'random' exists!
+```
+
+# Conditionals
+
+> A conditional statement is a Boolean expression that, if `True`, executes a piece of code.
 
 
+# Built-in Functions
 
+Instead of just using `in` keyword, can also use `find()` method. 
 
+Returns the index at which a substring occurs within a string. If no instance of a substring is found, the method is `-1`.
 
+`-1` is a conventional value that represents a `None` or failure in case the output was supposed to be positive.
 
+For a string called `a_string`, `find()` can be used in the following way:
 
+`a_string.find(substring, start, end)`
 
+- `substring` is what we are searching for.
+- `start` is the index from which we start searching in `a_string`.
+- `end` is the index where we stop our search in a `a_string`.
 
+`start` and `end` are optional.
 
+```
+random_string = "This is a string"
+print(random_string.find("is"))  # First instance of 'is' occurs at index 2
+print(random_string.find("is", 9, 13))  # No instance of 'is' in this range
+```
 
+# Replace
 
+`replace()`
 
+`a_string.replace(substring_to_replace, new_string)`
 
+The original string is not altered, instead a new string with the replaced substring is returned.
+
+```
+a_string = "Welcome to Educative!"
+new_string = a_string.replace("Welcome to", "Greetings from")
+print(a_string)
+print(new_string)
+```
+
+## Changing Letter Case
+
+`upper()`
+
+`lower()`
+
+`my_string.upper()`
+`my_string.lower()`
+
+# Type Conversions
+
+*To int* --> `int()`
+
+`int()`
+
+```
+print(int("12") * 10)  # String to integer
+print(int(20.5))  # Float to integer
+print(int(False))  # Bool to integer
+
+# print (int("Hello")) # This wouldn't work!
+```
+
+`ord()`
+
+Convert a character to its Unicode value.
+
+```
+print(ord('a'))
+print(ord('0'))
+```
+
+`float()`
+
+Translates data into a floating-point number.
+
+```
+print(float(24))
+print(float('24.5'))
+print(float(True))
+```
+
+`str()`
+
+Convert data into a string.
+
+```
+print(str(12) + '.345')
+print(str(False))
+print(str(12.345) + ' is a string')
+```
+
+`bool()`
+
+Takes in data, and returns the corresponding Boolean value.
+
+Strings are always converted to `True`.
+Floats and Integers with the value of `0` are considered to be `False`.
+All other terms are `True`.
+
+```
+print(bool(10))
+print(bool(0.0))
+print(bool("Hello"))
+```
+
+Other conversions are:
+
+`complex()` and `hex()`
+
+# Lambda Functions
+
+> A lambda is an anonymous function (without a defined name) that *returns* some form of data.
+
+> Can be written in-line, which isn't a huge advance
+
+> They are particularly useful when a function requires another function as its argument!
+
+`*lambda* parameters : expression`
+
+parameters --> inputs to the lambda function
+
+expression --> operation that returns something
+
+```
+triple = lambda num : num * 3
+
+print( triple(10) ) # calling the lambda and giving it a parameter
+```
+
+```
+concat = lambda a,b,c : a[0] + b[0] + c[0]
+
+print( concat("World", "Wide", "Web") )
+```
+
+# Functions as arguments
+
+Make a `calculator` function
+
+```
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    return n1 / n2
+
+def calculator(operation, n1, n2):
+    return operation(n1, n2)  # Using the 'operation' argument as a function
+
+result = calculator(multiply, 10, 20)
+print(result)
+print(calculator(add, 10, 20))
+
+###################################
+
+def calculator(operation, n1, n2):
+    return operation(n1, n2)  # Using the 'operation' argument as a function
+
+# 10 and 20 are the arguments.
+result = calculator(lambda n1, n2: n1 * n2, 10, 20)
+# The lambda multiplies them.
+print(result)
+
+print(calculator(lambda n1, n2: n1 + n2, 10, 20))
+```
+
+# The Map() function 
+
+The `map()` function, creates a map object using an existing list, and a function as its parameters.
+
+This object can be converted to a list using the `list()` function.
+
+`map(function, list)`
+
+The `function` will be applied, or *mapped* to all the element of the `list`.
+
+Below, we'll use the `map()` to double the values of an existing list:
+
+```
+num_list = [0,1,2,3,4,5]
+
+double_list = map(lambda n:n *2, num_list)
+
+print( list(double_list) )
+```
+
+This creates a new list! The original list remains unchanged.
+
+We could have created a function that doubles a number and used it as the argument in `map()`, but the lambda made things simpler.
+
+Another similar example is the `filter()` function. Requires a function and a list.
 
 
 
