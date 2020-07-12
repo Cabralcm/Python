@@ -125,5 +125,28 @@ We can call *elements* which will run an
 
 
 
+# Deques
+ 
+ deques “are a generalization of stacks and queues”. They are pronounced “deck” which is short for "double-ended queue".
+
+ Replacement container for Python list.
+
+ Deques - Thread-safe, and support memeory efficient appends and pops from either side of the deque.
+
+ A list is optimized for fast fixed length operations. 
+
+ > See Python documentation for more details
+
+ deque - accepts a *maxlen* argument which sets the bounds for the deque. Otherwise deque will grow to an arbitrary size. 
+ 
+ When a bounded deque is full, any new items added will cause the same number of items to be popped off the other end.
+
+# Named Tuple
+
+namedtuple can be used to replace Python's tuple
+
+namedtuple is not a drop-in replacement as you will soon see.
+
+Some programmers use it like a struct.
 
 
