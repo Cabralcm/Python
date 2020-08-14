@@ -10,11 +10,11 @@ Programming courses and projects in Python
 
 2) Switch focus to Active Editor/File. Search for: `workbench.action.focusActiveEditorGroup`
 
-3) Set Hot key: `Ctrl + K`
+3) Set Hot key: `Ctrl + J`
 
 4) Switch focus to Terminal. Search for: `workbench.action.terminal.focus`
 
-5) Hot key: `Ctrl + J`
+5) Hot key: `Ctrl + K`
 
 # Re-map Keyboard Bindings
 
