@@ -6,13 +6,15 @@ Programming courses and projects in Python
 
 **Goal**: Switch between Editting file and Terminal via Hotkeys.
 
-Switch focus to Active Editor/File: `workbench.action.focusActiveEditorGroup`
+1) File > Preferences > Keyboard Shortcuts
 
-Hot key: `Ctrl + K`
+2) Switch focus to Active Editor/File. Search for: `workbench.action.focusActiveEditorGroup`
 
-Switch focus to Terminal: `workbench.action.terminal.focus`
+3) Set Hot key: `Ctrl + K`
 
-Hot key: `Ctrl + J`
+4) Switch focus to Terminal. Search for: `workbench.action.terminal.focus`
+
+5) Hot key: `Ctrl + J`
 
 # Re-map Keyboard Bindings
 
